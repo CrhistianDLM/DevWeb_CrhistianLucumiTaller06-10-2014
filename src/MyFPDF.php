@@ -8,7 +8,11 @@ require('../utils/fpdf/fpdf.php');
 
 class MyFPDF extends FPDF
 {
-//Cabecera de página
+    function __construct()
+    {
+      $this->FPDF();
+    }
+//Cabecera de pï¿½gina
 function Header()
 { 
     $this->SetFont('Arial','B',8);
@@ -17,19 +21,19 @@ function Header()
     $this->Cell(50,10,'Fecha: '.$today,'',1,'R');
     $this->SetTextColor(50,50,150);
     $this->SetFont('Arial','B',15);
-    $this->Cell(0,5,'Funeraria "los inolvidables"',0,1,'C');
+    $this->Cell(0,5,mb_convert_encoding('NÃºmeros registrados', 'ISO-8859-1', 'UTF-8'),0,1,'C');
     $this->Cell(0,10,'',0,1,'C');
     //$this->Image('../img/logo.jpg',258,5,20); //derecha
 }
 
-//Pie de página
+//Pie de pï¿½gina
 function Footer()
 {
-    //Posición: a 1,5 cm del final
+    //Posiciï¿½n: a 1,5 cm del final
     $this->SetY(-15);
     //Arial italic 8
     $this->SetFont('Arial','I',8);
-    //Número de página
+    //Nï¿½mero de pï¿½gina
     $this->Cell(0,10,'Pagina '.$this->PageNo().'/{nb}',0,0,'C');
  }
  
@@ -48,11 +52,15 @@ function Footer()
     {
        // $wPt=$this->fwPt;
        // $hPt=$this->fhPt;
+       $wPt = $this->DefPageSize[0];
+        $hPt = $this->DefPageSize[1];
     }
     else
     {
-        $wPt=$this->fhPt;
-        $hPt=$this->fwPt;
+        //$wPt=$this->fhPt;
+        //$hPt=$this->fwPt;
+        $w = $this->DefPageSize[1];
+		$h = $this->DefPageSize[0];
     }
     $filter=($this->compress) ? '/Filter /FlateDecode ' : '';
     for($n=1;$n<=$nb;$n++)

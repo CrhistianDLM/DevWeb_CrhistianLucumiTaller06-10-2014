@@ -1,49 +1,51 @@
 <?php
  
-	//Código para incluir las librerias
+	//Cï¿½digo para incluir las librerias
 	 include_once("conexion.php");
 	 include('MyFPDF.php');
 
-	 //Conexión con el servidor
+	 //Conexiï¿½n con el servidor
 	  $link=ConectarseServidor();
 
-	 //Conexión con la base de datos
+	 //Conexiï¿½n con la base de datos
 	  ConectarseBaseDatos($link);
 
 	 //realiza consulta a la base de datos
-	 $sql = "select * from dwdifunto"; 
+	 $sql = "select * from dwnumeros"; 
      
-     $result=mysql_query($sql,$link);
+     $result=consultas($link, $sql);
 
 	   
-	   //inclusión de rutinas para crear informes PDF
+	   //inclusiï¿½n de rutinas para crear informes PDF
 	   $pdf=new MyFPDF();
 	   $pdf->AddPage('P');
 	   $pdf->SetFont('Arial','B',11);
-	   $pdf->Cell(0,8,"Difunto",0,0,'C',0);
+	   $pdf->Cell(0,8,"Numeros",0,0,'C',0);
 	   $pdf->Cell(0,20,"",0,1,'',0);
 
 		//titulos de las columnas
 		$pdf->SetTextColor(0,0,0); //rgb	
-		$pdf->Cell(30,5,'nombre',1,0,'C');	
-		$pdf->Cell(35,5,'Fecha Nacimiento',1,0,'C');	
-		$pdf->Cell(35,5,'Fecha Disfuncion',1,0,'C');	
-		$pdf->Cell(35,5,'Familiar',1,0,'C');	
+		
+		$pdf->Cell(20,5,mb_convert_encoding('NÃºmero', 'ISO-8859-1', 'UTF-8'),1,0,'C');	
+		$pdf->Cell(55,5,'Letras',1,0,'C');	
+		$pdf->Cell(55,5,'Texto invertido',1,0,'C');	
+		//$pdf->Cell(35,5,'Numero invertido',1,0,'C');	
+		$pdf->Cell(20,5,mb_convert_encoding('Invertido', 'ISO-8859-1', 'UTF-8'),1,0,'C');	
 
-		$pdf->Cell(0,5,'Usuario',1,1,'C');	
+		$pdf->Cell(0,5,'Texto en ingles',1,1,'C');	
 		$pdf->SetFont('Arial','',10);
 
 		//impresion de datos obtenidos desde la BD
-		 while($row = mysql_fetch_array($result)){
-			  $pdf->Cell(30,4,$row["nombre"],1,0,'C');
-			  $pdf->Cell(35,4,$row["f_naci"],1,0,'C');
-			  $pdf->Cell(35,4,$row["f_disf"],1,0,'C');
-			  $pdf->Cell(35,4,$row["familiar"],1,0,'C');
-			  $pdf->Cell(0,4,$row["usuario"],1,1,'C');
+		 while($row = mysqli_fetch_array($result)){
+			  $pdf->Cell(20,4,$row["numero"],1,0,'C');
+			  $pdf->Cell(55,4,$row["letra"],1,0,'C');
+			  $pdf->Cell(55,4,$row["inverso"],1,0,'C');
+			  $pdf->Cell(20,4,$row["ninverso"],1,0,'C');
+			  $pdf->Cell(0,4,$row["ti"],1,1,'C');
 		  }//fin del while	
 		
 		 //libera memoria
-		mysql_free_result ($result);
+		mysqli_free_result ($result);
 
 		//genera el PDF en el Navegador
 		$pdf->Output();  

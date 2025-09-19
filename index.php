@@ -101,8 +101,8 @@
 
 
  						<img src="img/pdf.gif" onClick="generarPDF();">
- 						<img src="img/pdf.gif" onClick="generarPDF3();">
- 						<img src="img/audio.png" width="24" onClick="">
+ 						<!--<img src="img/pdf.gif" onClick="generarPDF3();">-->
+ 						<!--<img src="img/audio.png" width="24" onClick="">-->
  					</div>
  				</form>
  			</div>
