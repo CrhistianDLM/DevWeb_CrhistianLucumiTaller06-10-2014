@@ -193,7 +193,7 @@ function Decenas(num){
 
 function DecenasY(strSin, numUnidades){
   if (numUnidades > 0)
-    return strSin + " Y " + Unidades(numUnidades)
+    return strSin + (activeLanguage == ESP ? " Y " : "") + Unidades(numUnidades)
 
   return strSin;
 }//DecenasY()
@@ -297,9 +297,21 @@ function NumeroALetras(num){
 
 function traducir(palabra) 
 {
+
+  /*
    google.load("language", "1"); 
   var text = palabra;    
   google.language.translate(text, "es", "en",resultadoTraduccion);    
+  */
+  activeLanguage = ENG;
+  numero = getNC();
+  numeroc=parseInt(numero);
+  val=NumeroALetras(numeroc);
+  activeLanguage = ESP;
+  let divtraduccion = document.getElementById("txtTI");         
+  divtraduccion.value = val;
+  console.log(val)
+
 }    
 
 function resultadoTraduccion(result) 

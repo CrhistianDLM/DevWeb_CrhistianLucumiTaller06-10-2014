@@ -2,7 +2,7 @@
  <html>
 
  <head>
- 	<title>Calculo de Indice Masa Corporal</title>
+ 	<title>Convertidor de letras en numeros</title>
  	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
  	<script type="text/JavaScript" src="js/jQuery.js"></script>
  	<script type="text/JavaScript" src="js/forms.js"></script>
@@ -11,10 +11,11 @@
 	<script type="text/javascript" src="http://www.google.com/jsapi">
  		google.load("language", "1");
  	</script>
- 	<script type="text/javascript" src="utils/mespeak/mespeak.js"></script>
+ 	<script type="text/javascript" src="utils/mespeak/mespeak.js" async onload="loadMSpeak()"></script>
  	<script type="text/javascript">
- 		meSpeak.loadConfig("utils/mespeak/mespeak_config.json");
- 		meSpeak.loadVoice("utils/mespeak/voices/es.json");
+ 		//meSpeak.loadConfig("utils/mespeak/mespeak_config.json");
+ 		function loadMSpeak(){
+			loadVoice(getLanguage());
 
  		function loadVoice(id) {
  			var fname = "voices/" + id + ".json";
@@ -29,6 +30,7 @@
  			}
 
  		}
+		}
  	</script>
  </head>
 
@@ -94,7 +96,7 @@
 
  						<img src="img/pdf.gif" onClick="generarPDF();">
  						<img src="img/pdf.gif" onClick="generarPDF3();">
- 						<img src="img/audio.gif" onClick="">
+ 						<img src="img/audio.png" width="24" onClick="">
  					</div>
  				</form>
  			</div>
@@ -107,20 +109,19 @@
  			<thead>
  				<tr>
  					<th>
- 						Nombres Completos
+ 						Numero
  					</th>
  					<th>
- 						Fecha de Nacimiento
+ 						Letras
  					</th>
  					<th>
- 						ii
- 						Fecha de Disfuncion
+ 						Texto invertido
  					</th>
  					<th>
- 						Familiar
+ 						Texto en ingles
  					</th>
  					<th>
- 						Usuario
+ 						Sonido
  					</th>
  				</tr>
  			</thead>
