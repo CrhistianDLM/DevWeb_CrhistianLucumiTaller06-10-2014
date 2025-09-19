@@ -7,7 +7,8 @@
  	<script type="text/JavaScript" src="js/jQuery.js"></script>
  	<script type="text/JavaScript" src="js/forms.js"></script>
  	<script type="text/JavaScript" src="js/Reporte.js"></script>
- 	<script type="text/javascript" src="http://www.google.com/jsapi">
+ 	<script type="text/JavaScript" src="js/convertidoraletra.js"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi">
  		google.load("language", "1");
  	</script>
  	<script type="text/javascript" src="utils/mespeak/mespeak.js"></script>
