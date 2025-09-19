@@ -4,6 +4,11 @@
  <head>
  	<title>Convertidor de letras en numeros</title>
  	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<style>
+		.buttons .btn{
+			margin-bottom: 8px;
+		}
+	</style>
  	<script type="text/JavaScript" src="js/jQuery.js"></script>
  	<script type="text/JavaScript" src="js/forms.js"></script>
  	<script type="text/JavaScript" src="js/Reporte.js"></script>
@@ -24,7 +29,8 @@
 
  		function voiceLoaded(success, message) {
  			if (success) {
- 				alert("Voice loaded: " + message + ".");
+				 document.getElementById("btnVoz").classList.remove("disabled");
+ 				console.log("Voice loaded: " + message + ".");
  			} else {
  				alert("Failed to load a voice: " + message);
  			}
@@ -75,11 +81,11 @@
  					</div>
 
  					<hr class="colorgraph">
- 					<div class="row">
- 						<div style="margin-bottom:8px;" class="col-xs-12 col-md-6">
+ 					<div class="row buttons">
+ 						<div class="col-xs-12 col-md-6">
  							<div class="btn btn-primary btn-block btn-lg" tabindex="7" id="btnConvertir">Convertir</div>
  						</div>
- 						<div style="margin-bottom:8px;" class="col-xs-12 col-md-6">
+ 						<div class="col-xs-12 col-md-6">
  							<div class="btn btn-primary btn-block btn-lg" tabindex="7" id="btnGuardar">Guardar</div>
  						</div>
  						<div class="col-xs-12 col-md-6">
@@ -89,7 +95,7 @@
  							<div class="btn btn-primary btn-block btn-lg" tabindex="8" id="btnTraducir">Traducir</div>
  						</div>
  						<div class="col-xs-12 col-md-6">
- 							<div class="btn btn-primary btn-block btn-lg" tabindex="8" id="btnVoz">Voz</div>
+ 							<div class="btn btn-primary btn-block btn-lg disabled" tabindex="8" id="btnVoz">Voz</div>
  						</div>
  						<div class="col-xs-12 col-md-6"><input type="reset" class="btn btn-primary btn-block btn-lg" tabindex="7" id="btnLimpiar" value="Limpiar" /></div>
 
@@ -109,7 +115,7 @@
  			<thead>
  				<tr>
  					<th>
- 						Numero
+ 						Número
  					</th>
  					<th>
  						Letras
@@ -118,10 +124,13 @@
  						Texto invertido
  					</th>
  					<th>
+ 						Número invertido
+ 					</th>
+ 					<th>
  						Texto en ingles
  					</th>
  					<th>
- 						Sonido
+ 						Acciones
  					</th>
  				</tr>
  			</thead>

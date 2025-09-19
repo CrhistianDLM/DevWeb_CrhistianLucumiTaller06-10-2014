@@ -11,12 +11,12 @@
 	  ConectarseBaseDatos($link);
 
 	 //realiza consulta a la base de datos
-	 $sql = "select * from dwdifunto"; 
+	 $sql = "select * from dwnumeros"; 
      
-     $result=mysql_query($sql,$link);
+     $result=consultas($link,$sql);
 	 
-		while($row = mysql_fetch_array($result)){
-			$datos   = array('nombre' => $row['nombre'] , 'f_naci' => $row['f_naci'] , 'f_disf' => $row['f_disf'], 'familiar' => $row['familiar'], 'usuario' => $row['usuario']);
+		while($row = mysqli_fetch_array($result)){
+			$datos   = array('nombre' => $row['numero'] , 'f_naci' => $row['letra'] , 'f_disf' => $row['inverso'], 'familiar' => $row['ninverso'], 'usuario' => $row['ti']);
 		    $rows[]     = $datos;
 		}
 

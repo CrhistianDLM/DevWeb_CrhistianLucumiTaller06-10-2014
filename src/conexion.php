@@ -12,7 +12,7 @@
 
 	function ConectarseBaseDatos($link)
 	{
-		if (!mysqli_select_db($link, "datosimc"))
+		if (!mysqli_select_db($link, "datosnumeros"))
 		{
 			echo "Error seleccionando la base de datos.";
 			exit();
