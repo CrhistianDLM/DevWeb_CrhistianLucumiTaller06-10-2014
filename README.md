@@ -1,2 +1,2 @@
 # Convertidor de letras en numeros
-![Texto alternativo](Screenshop_2025-09-19)
+![Texto alternativo](Screenshop_2025-09-19.png)
